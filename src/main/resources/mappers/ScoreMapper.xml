@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ex.dao.ScoreMapper">
+    <resultMap id="BaseResultMap" type="com.ex.model.Score">
+        <constructor>
+            <idArg column="sid" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <idArg column="cid" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="score" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+    sid, cid, score
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.zxs.ex.model.ScoreKey">
+        select
+        <include refid="Base_Column_List"/>
+        from t_score
+        where sid = #{sid,jdbcType=VARCHAR}
+        and cid = #{cid,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="com.zxs.ex.model.ScoreKey">
+    delete from t_score
+    where sid = #{sid,jdbcType=VARCHAR}
+      and cid = #{cid,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.ex.model.Score">
+    insert into t_score (sid, cid, score
+      )
+    values (#{sid,jdbcType=VARCHAR}, #{cid,jdbcType=VARCHAR}, #{score,jdbcType=INTEGER}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.ex.model.Score">
+        insert into t_score
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sid != null">
+                sid,
+            </if>
+            <if test="cid != null">
+                cid,
+            </if>
+            <if test="score != null">
+                score,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="sid != null">
+                #{sid,jdbcType=VARCHAR},
+            </if>
+            <if test="cid != null">
+                #{cid,jdbcType=VARCHAR},
+            </if>
+            <if test="score != null">
+                #{score,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.ex.model.Score">
+        update t_score
+        <set>
+            <if test="score != null">
+                score = #{score,jdbcType=INTEGER},
+            </if>
+        </set>
+        where sid = #{sid,jdbcType=VARCHAR}
+        and cid = #{cid,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.ex.model.Score">
+    update t_score
+    set score = #{score,jdbcType=INTEGER}
+    where sid = #{sid,jdbcType=VARCHAR}
+      and cid = #{cid,jdbcType=VARCHAR}
+  </update>
+</mapper>
