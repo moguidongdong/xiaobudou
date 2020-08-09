@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:task="http://www.springframework.org/schema/task" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+       http://www.springframework.org/schema/task
+       http://www.springframework.org/schema/task/spring-task-4.0.xsd">
+
+
+    <description>Spring MVC Configuration</description>
+
+    <mvc:annotation-driven>
+        <!-- 处理controller返回中文乱码问题 -->
+        <mvc:message-converters register-defaults="true">
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="UTF-8"/>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+
+    <!-- 扫描controller（controller层注入） -->
+    <context:component-scan base-package="com.*.controller"/>
+
+
+    <!-- 配置jsp 显示ViewResolver -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <mvc:interceptors>
+        <!-- 默认拦截所有请求 -->
+        <bean class="com.interceptor.FirstInterceptor"></bean>
+        <bean class="com.interceptor.SecondInterceptor"></bean>
+
+        <!-- 此方式要求拦截器类上必须加注解@Component -->
+        <!-- <ref bean="firstInterceptor"/> -->
+
+        <!-- 设置自定义拦截方式 -->
+        <!-- <mvc:interceptor>
+            <bean></bean>
+            <mvc:mapping path=""/>
+            <mvc:exclude-mapping path=""/>
+        </mvc:interceptor> -->
+    </mvc:interceptors>
+
+
+    <!-- 拦截器 -->
+    <!--    <mvc:interceptors>-->
+    <!--    <mvc:interceptor>-->
+    <!--    <mvc:mapping path="/ibms/**"/>-->
+    <!--    <bean class="com.eling.interceptor.IbmsTokenInterceptor"/>-->
+    <!--    </mvc:interceptor>-->
+    <!--    </mvc:interceptors>-->
+
+
+    <!--   <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>application/json;charset=UTF-8</value>
+                <value>text/html;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean> -->
+    <!--拦截器-->
+    <!--<mvc:interceptors>-->
+    <!--<mvc:interceptor>-->
+    <!--<mvc:mapping path="/**"/>-->
+    <!--<mvc:exclude-mapping path="/market/membership_contract/audit"/>-->
+    <!--<mvc:exclude-mapping path="/customerServiceApproval/checkIn/save"/>-->
+    <!--<mvc:exclude-mapping path="/market/membership_cancel/audits"/>-->
+    <!--<mvc:exclude-mapping path="/customerServiceApproval/checkOut/save"/>-->
+    <!--<bean class="com.eling.interceptor.LoginInterceptor"></bean>-->
+
+
+    <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
+    <!--&lt;!&ndash; 越权拦截 &ndash;&gt;-->
+    <!--<mvc:interceptors>-->
+    <!--<mvc:interceptor>-->
+    <!--<mvc:mapping path="/**"/>-->
+    <!--<mvc:exclude-mapping path="/ibms/**"/>-->
+    <!--<bean class="com.eling.interceptor.MalfeasanceInterceptor"/>-->
+    <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
+</beans>
