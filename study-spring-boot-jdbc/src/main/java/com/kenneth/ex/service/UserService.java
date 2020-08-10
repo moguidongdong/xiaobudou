@@ -1,6 +1,6 @@
 package com.kenneth.ex.service;
 
-import com.kenneth.ex.entity.User;
+import com.kenneth.ex.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;

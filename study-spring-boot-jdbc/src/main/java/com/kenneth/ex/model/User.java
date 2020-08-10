@@ -1,4 +1,4 @@
-package com.kenneth.ex.entity;
+package com.kenneth.ex.model;
 
 public class User {
     private Integer id;
