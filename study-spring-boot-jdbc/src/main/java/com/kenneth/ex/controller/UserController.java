@@ -18,4 +18,9 @@ public class UserController {
     public String addUser(User user) {
         return userService.addUser(user);
     }
+
+    @RequestMapping("/showHello")
+    public String showHello() {
+        return "Hello xiaobudou";
+    }
 }
