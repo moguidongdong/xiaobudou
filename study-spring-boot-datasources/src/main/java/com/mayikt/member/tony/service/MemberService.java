@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -27,5 +28,9 @@ public class MemberService {
         map.put("respsCode", "200");
         map.put("repsMag", result > 0 ? "addMember success" : "addMember fail");
         return map;
+    }
+
+    public List<Member> queryAll() {
+        return memberMapper.queryAll();
     }
 }

@@ -26,7 +26,6 @@ public class DataSourcesController {
     @Autowired
     private DataSourcesService dataSourcesService;
 
-
     @RequestMapping("/addMember2")
     public Map addMember2(Member member) {
         return memberService.addMember(member);
@@ -40,6 +39,11 @@ public class DataSourcesController {
     @RequestMapping("/addMemberAndOrder")
     public Map addMemberAndOrder(Map<String, Object> params) {
         return dataSourcesService.addMemberAndOrder(params);
+    }
+
+    @RequestMapping("/sayHello")
+    public String sayHello() {
+        return "Hello";
     }
 
 }

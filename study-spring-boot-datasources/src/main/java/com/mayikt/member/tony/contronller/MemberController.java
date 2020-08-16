@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -18,5 +19,10 @@ public class MemberController {
     @RequestMapping("/addMember")
     public Map addMember(Member member) {
         return memberService.addMember(member);
+    }
+
+    @RequestMapping("/queryAll")
+    public List<Member> queryAll() {
+        return memberService.queryAll();
     }
 }
