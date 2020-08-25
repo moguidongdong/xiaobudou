@@ -1,0 +1,9 @@
+spring：
+application:
+  name: study-spring-boot-raqqitmq
+
+raqqitmq:
+  host: localhost
+  port: 5672
+  username: zzq
+  password: zzq

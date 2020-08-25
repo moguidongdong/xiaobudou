@@ -12,7 +12,7 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:spring.xml</param-value>
+		<param-value>classpath:application.xml</param-value>
 	</context-param>
 
 	<!-- 如果是用mvn命令生成的xml，需要修改servlet版本为3.1 -->
@@ -21,7 +21,7 @@
 		<servlet-name>mvc-dispatcher</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<!-- 配置springMVC需要加载的配置文件
-			spring-dao.xml,spring.xml,spring-mvc.xml
+			spring-dao.xml,application.xml,spring-mvc.xml
 			Mybatis - > spring -> springmvc
 		 -->
 		<init-param>
