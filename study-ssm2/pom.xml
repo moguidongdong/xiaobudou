@@ -105,7 +105,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-expression</artifactId>
-            <version>5.2.6.RELEASE</version>
+            <version>5.2.21.RELEASE</version>
         </dependency>
 
         <!-- 加强版的面向切面编程（即使目标对象没有实现任何接口也能创建） -->
